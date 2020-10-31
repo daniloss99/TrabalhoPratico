@@ -16,6 +16,8 @@
 
 using namespace std; 
 
+//testando se muda alguma coisa
+
 std::map<string, int> vetor_roteamento; 
 string char_to_string(const char palavra[]);
 
