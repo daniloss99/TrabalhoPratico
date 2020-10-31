@@ -25,6 +25,52 @@ string char_to_string(const char palavra[]);
 
 int periodo; 
 
+
+//FUNCAO PRINCIPAL 
+void func(int socket_, struct sockaddr* src_addr, socklen_t *addrlen)
+{
+    char entrada[CARACTERES];     
+    char comando[10]; 
+    char argumento1[50];
+    int argumento2; 
+
+    string arg1; 
+    int arg2; 
+
+    while(1)
+    {      
+        cout << "Digite o comando que deseja executar: " << endl; 
+        cin.getline(entrada,sizeof(entrada));
+
+        obtem_comando(entrada, comando, argumento1, argumento2); 
+
+        if(strcmp(comando, "add") == 0)
+        {
+            arg1 = char_to_string(argumento1); 
+            arg2 = argumento2; 
+            salva_endereco(arg1, arg2); 
+        }
+
+        else if(strcmp(comando, "del") == 0)
+        {
+            arg1 = char_to_string(argumento1); 
+            deleta_endereco(argumento1);  
+        }
+
+        else if(strcmp(comando, "quit") == 0)
+        {
+            break; 
+        }
+
+        memset(&entrada, 0, sizeof(entrada)); 
+        memset(&comando, 0, sizeof(comando)); 
+        memset(&argumento1, 0, sizeof(argumento1)); 
+        memset(&argumento2, 0, sizeof(argumento2));  
+    }
+    
+}
+
+
 int main(int argc, char **argv) {
 
     if (argc > 3) 
